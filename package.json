@@ -1,0 +1,12 @@
+{
+  "author": "Sandro Pasquali <spasquali@gmail.com>",
+  "name": "snoopy",
+  "description": "A general page snooping framework",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=0.10.10"
+  },
+  "dependencies": {
+    "ws": "0.4.27"
+  }
+}
