@@ -3,6 +3,10 @@ Snoopy
 
 Remember to `npm install`
 
+Start with `node server`
+
+An HTTP server will now be listening on 8080. The socket server will be listening to 8081.
+
 A demo of using Node's `cluster` module to create multiple socket servers sharing a single port. The goal is to have a small probe report user actions to an administration interface. 
 
 ![Admin](admin.png)
