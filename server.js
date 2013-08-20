@@ -92,6 +92,14 @@ if(cluster.isMaster) {
 	.on('fork', function(worker) {
 	})
 	.on('online', function(worker) {
+		worker.on('message', function(msg) {
+			var a;
+			for(a in admins) {		
+				if(admins[a].socket) {
+					admins[a].socket.write("data: " + JSON.stringify(msg) + "\n\n");
+				}
+			}
+		});
 	})
 	.on('listening', function(worker, address) {
 	})
@@ -103,17 +111,4 @@ if(cluster.isMaster) {
 	.on('disconnect', function(worker, code, signal) {
 		console.log('worker ' + worker.process.pid + ' disconnected');
 	})
-
-	//	Receive messages from workers
-	//
-	Object.keys(cluster.workers).forEach(function(id) {
-		cluster.workers[id].on('message', function(msg) {
-			var a;
-			for(a in admins) {		
-				if(admins[a].socket) {
-					admins[a].socket.write("data: " + JSON.stringify(msg) + "\n\n");
-				}
-			}
-		});
-	});
 } 
